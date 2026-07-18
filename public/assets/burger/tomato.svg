@@ -1,0 +1,19 @@
+<svg width="500" height="100" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tomato" x1="250" y1="10" x2="250" y2="91" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5A3D"/>
+      <stop offset="0.55" stop-color="#D92D1E"/>
+      <stop offset="1" stop-color="#8B130E"/>
+    </linearGradient>
+    <filter id="shadow" x="-20" y="-25" width="540" height="160" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="11" stdDeviation="11" flood-color="#000" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M45 43C90 20 160 14 250 14C340 14 410 20 455 43C472 52 472 67 455 76C410 94 340 97 250 97C160 97 90 94 45 76C28 67 28 52 45 43Z" fill="url(#tomato)"/>
+    <path d="M63 48C120 31 181 28 250 28C319 28 380 31 437 48" stroke="#FF9A79" stroke-width="7" stroke-linecap="round" opacity="0.5"/>
+    <ellipse cx="143" cy="57" rx="38" ry="16" fill="#FFB38E" opacity="0.18"/>
+    <ellipse cx="250" cy="54" rx="42" ry="17" fill="#FFB38E" opacity="0.16"/>
+    <ellipse cx="357" cy="57" rx="38" ry="16" fill="#FFB38E" opacity="0.18"/>
+  </g>
+</svg>
