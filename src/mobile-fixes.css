@@ -1,0 +1,92 @@
+@media (max-width: 640px) {
+  .burger-story {
+    height: 610vh;
+  }
+
+  .sticky-stage {
+    min-height: 100svh;
+  }
+
+  .hero-copy {
+    top: 47%;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 13.2vw, 4.65rem);
+    line-height: 0.91;
+  }
+
+  .hero-copy p {
+    max-width: 94%;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .burger-layer {
+    top: 42%;
+    max-width: 78vw;
+  }
+
+  .burger-box {
+    top: 48%;
+    width: 78vw;
+    height: 190px;
+  }
+
+  .box-base {
+    inset: 62px 0 0;
+    padding-bottom: 18px;
+  }
+
+  .box-lid {
+    inset: 0 0 50px;
+    border-radius: 22px;
+  }
+
+  .order-reveal {
+    bottom: 46px;
+    width: calc(100% - 56px);
+  }
+
+  .order-reveal > span {
+    font-size: 0.61rem;
+  }
+
+  .order-reveal h2 {
+    font-size: clamp(1.75rem, 8.8vw, 2.8rem);
+    line-height: 0.94;
+  }
+
+  .order-reveal a {
+    margin-top: 14px;
+    padding: 13px 24px;
+  }
+
+  .step-labels {
+    bottom: 14px;
+  }
+
+  .progress-rail {
+    height: 30vh;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand span {
+    font-size: 0.7rem;
+  }
+
+  .header-order {
+    padding: 8px 12px;
+  }
+
+  .hero-copy h1 {
+    font-size: 12.5vw;
+  }
+
+  .burger-layer,
+  .burger-box {
+    max-width: 74vw;
+  }
+}
