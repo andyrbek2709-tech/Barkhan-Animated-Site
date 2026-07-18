@@ -1,0 +1,22 @@
+<svg width="480" height="100" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-20" y="-25" width="520" height="160" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <linearGradient id="ring" x1="240" y1="8" x2="240" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5B8E8"/>
+      <stop offset="0.5" stop-color="#A84A9D"/>
+      <stop offset="1" stop-color="#5A1F63"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#shadow)" stroke="url(#ring)" stroke-width="14" opacity="0.98">
+    <ellipse cx="104" cy="52" rx="58" ry="25"/>
+    <ellipse cx="239" cy="45" rx="72" ry="28"/>
+    <ellipse cx="377" cy="55" rx="57" ry="24"/>
+  </g>
+  <g stroke="#FFE1F8" stroke-width="4" opacity="0.45">
+    <ellipse cx="104" cy="52" rx="42" ry="16"/>
+    <ellipse cx="239" cy="45" rx="54" ry="19"/>
+    <ellipse cx="377" cy="55" rx="41" ry="15"/>
+  </g>
+</svg>
