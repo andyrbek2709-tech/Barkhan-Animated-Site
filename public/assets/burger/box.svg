@@ -1,0 +1,24 @@
+<svg width="900" height="520" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="450" y1="55" x2="450" y2="487" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFC786"/>
+      <stop offset="1" stop-color="#A66A32"/>
+    </linearGradient>
+    <linearGradient id="inside" x1="450" y1="155" x2="450" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4A2918"/>
+      <stop offset="1" stop-color="#1B0F0B"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity="0.48"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M151 184L240 70H660L749 184L676 252H224L151 184Z" fill="url(#card)"/>
+    <path d="M240 70L286 159H614L660 70" fill="#F5D59D"/>
+    <path d="M224 252H676L716 435C722 464 700 486 670 486H230C200 486 178 464 184 435L224 252Z" fill="url(#card)"/>
+    <path d="M245 266H655L673 405C677 426 662 441 641 441H259C238 441 223 426 227 405L245 266Z" fill="url(#inside)"/>
+    <path d="M184 435L273 374H627L716 435" stroke="#7A4825" stroke-width="8" opacity="0.48"/>
+    <path d="M340 465C375 440 525 440 560 465" stroke="#F6D29A" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+    <path d="M382 114H518" stroke="#9B5F2C" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+  </g>
+</svg>
