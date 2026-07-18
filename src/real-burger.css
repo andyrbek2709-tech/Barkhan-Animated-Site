@@ -1,0 +1,95 @@
+.burger-layer-real {
+  height: auto;
+  object-fit: contain;
+  backface-visibility: hidden;
+  filter:
+    drop-shadow(0 20px 18px rgba(0, 0, 0, 0.42))
+    saturate(1.08)
+    contrast(1.03);
+}
+
+.steam-field {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  z-index: 48;
+  width: 360px;
+  height: 220px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.steam-field i {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 22px;
+  height: 116px;
+  border-radius: 50%;
+  border-left: 3px solid rgba(255, 244, 222, 0.2);
+  filter: blur(4px);
+  opacity: 0;
+  animation: steam-rise 2.8s ease-in-out infinite;
+}
+
+.steam-one {
+  left: 30%;
+  animation-delay: -0.8s !important;
+}
+
+.steam-two {
+  left: 49%;
+  height: 142px !important;
+  animation-delay: -1.8s !important;
+}
+
+.steam-three {
+  left: 67%;
+  animation-delay: -2.35s !important;
+}
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scaleX(0.75) rotate(-7deg);
+  }
+  28% {
+    opacity: 0.48;
+  }
+  72% {
+    opacity: 0.14;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(14px, -78px, 0) scaleX(1.35) rotate(11deg);
+  }
+}
+
+.product-burger img {
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 10px rgba(29, 14, 7, 0.22));
+  backface-visibility: hidden;
+}
+
+@media (max-width: 640px) {
+  .burger-layer-real {
+    filter:
+      drop-shadow(0 14px 12px rgba(0, 0, 0, 0.42))
+      saturate(1.06)
+      contrast(1.02);
+  }
+
+  .steam-field {
+    top: 34%;
+    width: 270px;
+    height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steam-field i {
+    animation: none;
+  }
+}
