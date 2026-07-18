@@ -1,0 +1,20 @@
+<svg width="520" height="150" viewBox="0 0 520 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="meat" x1="260" y1="18" x2="260" y2="137" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C2B16"/>
+      <stop offset="0.48" stop-color="#3D170E"/>
+      <stop offset="1" stop-color="#1B0A07"/>
+    </linearGradient>
+    <filter id="shadow" x="-25" y="-30" width="570" height="220" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M45 55C83 25 156 16 260 16C364 16 437 25 475 55C503 77 491 112 462 126C420 145 344 146 260 146C176 146 100 145 58 126C29 112 17 77 45 55Z" fill="url(#meat)"/>
+    <path d="M66 68C122 45 187 42 260 42C333 42 398 45 454 68" stroke="#A74C2C" stroke-width="9" stroke-linecap="round" opacity="0.55"/>
+    <path d="M95 96C132 82 164 88 197 99M215 90C248 73 282 74 314 94M333 101C364 86 398 88 430 104" stroke="#B85B32" stroke-width="8" stroke-linecap="round" opacity="0.38"/>
+    <circle cx="132" cy="67" r="5" fill="#E07A46" opacity="0.55"/>
+    <circle cx="303" cy="56" r="4" fill="#E07A46" opacity="0.5"/>
+    <circle cx="390" cy="84" r="5" fill="#E07A46" opacity="0.42"/>
+  </g>
+</svg>
