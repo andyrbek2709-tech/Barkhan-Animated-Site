@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
+import { burgerReal } from './assets/burger-real'
 
 type BurgerLayer = {
-  id: string
+  id: keyof typeof burgerReal
   name: string
   src: string
   finalY: number
@@ -28,16 +29,18 @@ type MenuProduct = {
   layers: ProductLayer[]
 }
 
+const ORDER_URL = 'https://barkhanburgershop.com/aktau'
+
 const layers: BurgerLayer[] = [
-  { id: 'bottom', name: 'Нижняя булочка', src: '/assets/burger/bun-bottom.svg', finalY: 185, start: 0.08, startX: -260, rotate: -12, width: 390 },
-  { id: 'sauce', name: 'Фирменный соус', src: '/assets/burger/sauce.svg', finalY: 143, start: 0.15, startX: 255, rotate: 8, width: 410 },
-  { id: 'lettuce', name: 'Свежий салат', src: '/assets/burger/lettuce.svg', finalY: 112, start: 0.22, startX: -270, rotate: -9, width: 430 },
-  { id: 'patty', name: 'Мясная котлета', src: '/assets/burger/patty.svg', finalY: 70, start: 0.30, startX: 280, rotate: 10, width: 410 },
-  { id: 'cheese', name: 'Сыр', src: '/assets/burger/cheese.svg', finalY: 26, start: 0.38, startX: -285, rotate: -8, width: 430 },
-  { id: 'pickles', name: 'Маринованные огурцы', src: '/assets/burger/pickles.svg', finalY: -10, start: 0.46, startX: 255, rotate: 11, width: 370 },
-  { id: 'tomato', name: 'Томаты', src: '/assets/burger/tomato.svg', finalY: -42, start: 0.54, startX: -260, rotate: -9, width: 390 },
-  { id: 'onion', name: 'Красный лук', src: '/assets/burger/onion.svg', finalY: -76, start: 0.61, startX: 250, rotate: 11, width: 370 },
-  { id: 'top', name: 'Верхняя булочка', src: '/assets/burger/bun-top.svg', finalY: -177, start: 0.69, startX: 0, rotate: -5, width: 410 },
+  { id: 'bottom', name: 'Нижняя булочка', src: burgerReal.bottom, finalY: 172, start: 0.08, startX: -250, rotate: -10, width: 405 },
+  { id: 'sauce', name: 'Фирменный соус', src: burgerReal.sauce, finalY: 136, start: 0.15, startX: 245, rotate: 8, width: 400 },
+  { id: 'lettuce', name: 'Свежий салат', src: burgerReal.lettuce, finalY: 108, start: 0.22, startX: -255, rotate: -8, width: 420 },
+  { id: 'patty', name: 'Мясная котлета', src: burgerReal.patty, finalY: 64, start: 0.30, startX: 260, rotate: 9, width: 400 },
+  { id: 'cheese', name: 'Сыр', src: burgerReal.cheese, finalY: 25, start: 0.38, startX: -265, rotate: -7, width: 420 },
+  { id: 'pickles', name: 'Маринованные огурцы', src: burgerReal.pickles, finalY: -8, start: 0.46, startX: 245, rotate: 9, width: 360 },
+  { id: 'tomato', name: 'Томаты', src: burgerReal.tomato, finalY: -38, start: 0.54, startX: -245, rotate: -8, width: 380 },
+  { id: 'onion', name: 'Красный лук', src: burgerReal.onion, finalY: -65, start: 0.61, startX: 235, rotate: 9, width: 360 },
+  { id: 'top', name: 'Верхняя булочка', src: burgerReal.top, finalY: -147, start: 0.69, startX: 0, rotate: -4, width: 405 },
 ]
 
 const menuProducts: MenuProduct[] = [
@@ -48,14 +51,15 @@ const menuProducts: MenuProduct[] = [
     badge: 'Фирменный',
     description: 'Двойная котлета, чеддер, томаты, красный лук, огурцы, салат и три фирменных соуса.',
     layers: [
-      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 92, width: 70 },
-      { src: '/assets/burger/lettuce.svg', alt: 'Салат', y: 67, width: 76 },
-      { src: '/assets/burger/patty.svg', alt: 'Котлета', y: 39, width: 72 },
-      { src: '/assets/burger/cheese.svg', alt: 'Сыр', y: 13, width: 76 },
-      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -9, width: 62 },
-      { src: '/assets/burger/tomato.svg', alt: 'Томаты', y: -31, width: 69 },
-      { src: '/assets/burger/onion.svg', alt: 'Красный лук', y: -50, width: 64 },
-      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -112, width: 73 },
+      { src: burgerReal.bottom, alt: 'Нижняя булочка', y: 91, width: 72 },
+      { src: burgerReal.sauce, alt: 'Соус', y: 70, width: 72 },
+      { src: burgerReal.lettuce, alt: 'Салат', y: 49, width: 78 },
+      { src: burgerReal.patty, alt: 'Котлета', y: 18, width: 73 },
+      { src: burgerReal.cheese, alt: 'Сыр', y: -7, width: 77 },
+      { src: burgerReal.pickles, alt: 'Огурцы', y: -28, width: 64 },
+      { src: burgerReal.tomato, alt: 'Томаты', y: -48, width: 70 },
+      { src: burgerReal.onion, alt: 'Красный лук', y: -65, width: 65 },
+      { src: burgerReal.top, alt: 'Верхняя булочка', y: -119, width: 74 },
     ],
   },
   {
@@ -65,14 +69,15 @@ const menuProducts: MenuProduct[] = [
     badge: 'Хит',
     description: 'Двойная smash-котлета, тройной чеддер, огурцы, жареный лук и пикантные соусы.',
     layers: [
-      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 94, width: 70 },
-      { src: '/assets/burger/patty.svg', alt: 'Первая котлета', y: 61, width: 73 },
-      { src: '/assets/burger/cheese.svg', alt: 'Первый слой сыра', y: 36, width: 76 },
-      { src: '/assets/burger/patty.svg', alt: 'Вторая котлета', y: 8, width: 73 },
-      { src: '/assets/burger/cheese.svg', alt: 'Второй слой сыра', y: -17, width: 76 },
-      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -39, width: 61 },
-      { src: '/assets/burger/onion.svg', alt: 'Лук', y: -55, width: 60 },
-      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -116, width: 73 },
+      { src: burgerReal.bottom, alt: 'Нижняя булочка', y: 99, width: 72 },
+      { src: burgerReal.sauce, alt: 'Соус', y: 77, width: 70 },
+      { src: burgerReal.patty, alt: 'Первая котлета', y: 48, width: 73 },
+      { src: burgerReal.cheese, alt: 'Первый слой сыра', y: 25, width: 76 },
+      { src: burgerReal.patty, alt: 'Вторая котлета', y: -5, width: 73 },
+      { src: burgerReal.cheese, alt: 'Второй слой сыра', y: -29, width: 76 },
+      { src: burgerReal.pickles, alt: 'Огурцы', y: -49, width: 63 },
+      { src: burgerReal.onion, alt: 'Лук', y: -65, width: 62 },
+      { src: burgerReal.top, alt: 'Верхняя булочка', y: -120, width: 74 },
     ],
   },
   {
@@ -82,18 +87,24 @@ const menuProducts: MenuProduct[] = [
     badge: 'Легче',
     description: 'Куриная грудка, чеддер, свежие томаты, огурцы, салат и соусы Айоли и 1000 островов.',
     layers: [
-      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 93, width: 70 },
-      { src: '/assets/burger/lettuce.svg', alt: 'Салат', y: 67, width: 76 },
-      { src: '/assets/burger/patty.svg', alt: 'Куриная грудка', y: 34, width: 71 },
-      { src: '/assets/burger/cheese.svg', alt: 'Сыр', y: 9, width: 75 },
-      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -15, width: 61 },
-      { src: '/assets/burger/tomato.svg', alt: 'Томаты', y: -38, width: 68 },
-      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -105, width: 73 },
+      { src: burgerReal.bottom, alt: 'Нижняя булочка', y: 92, width: 72 },
+      { src: burgerReal.sauce, alt: 'Соус', y: 70, width: 70 },
+      { src: burgerReal.lettuce, alt: 'Салат', y: 48, width: 78 },
+      { src: burgerReal.patty, alt: 'Куриная грудка', y: 16, width: 72 },
+      { src: burgerReal.cheese, alt: 'Сыр', y: -8, width: 76 },
+      { src: burgerReal.pickles, alt: 'Огурцы', y: -29, width: 63 },
+      { src: burgerReal.tomato, alt: 'Томаты', y: -49, width: 69 },
+      { src: burgerReal.top, alt: 'Верхняя булочка', y: -112, width: 74 },
     ],
   },
 ]
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value))
+const easeOutBack = (value: number) => {
+  const c1 = 1.70158
+  const c3 = c1 + 1
+  return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2)
+}
 
 function ProductBurger({ product }: { product: MenuProduct }) {
   return (
@@ -156,6 +167,7 @@ export default function App() {
   const boxProgress = clamp((progress - 0.80) / 0.11)
   const lidProgress = clamp((progress - 0.89) / 0.065)
   const orderProgress = clamp((progress - 0.94) / 0.06)
+  const steamProgress = clamp((progress - 0.68) / 0.16)
 
   const isMobile = viewportWidth <= 640
   const isTablet = viewportWidth > 640 && viewportWidth <= 900
@@ -170,7 +182,7 @@ export default function App() {
           <img src="/assets/barkhan-mark.svg" alt="" />
           <span>BARKHAN</span>
         </a>
-        <a className="header-order" href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Заказать</a>
+        <a className="header-order" href={ORDER_URL} target="_blank" rel="noreferrer">Заказать</a>
       </header>
 
       <section className="burger-story" ref={storyRef} id="top">
@@ -194,20 +206,26 @@ export default function App() {
 
           <div className="burger-scene" aria-label="Анимированная сборка фирменного бургера Barkhan">
             <div className="burger-glow" />
+            <div className="steam-field" style={{ opacity: steamProgress * (1 - boxProgress) }} aria-hidden="true">
+              <i className="steam-one" />
+              <i className="steam-two" />
+              <i className="steam-three" />
+            </div>
 
             {layers.map((layer, index) => {
-              const layerProgress = clamp((progress - layer.start) / 0.105)
+              const rawProgress = clamp((progress - layer.start) / 0.105)
+              const layerProgress = easeOutBack(rawProgress)
               const entryY = (-430 - index * 28) * sceneRatio
               const finalY = layer.finalY * sceneRatio
               const y = entryY + (finalY - entryY) * layerProgress
               const x = layer.startX * sceneRatio * (1 - layerProgress)
               const rotate = layer.rotate * (1 - layerProgress)
-              const scale = 0.7 + layerProgress * 0.3
+              const scale = 0.76 + rawProgress * 0.24
               const packedScale = 1 - boxProgress * 0.13
 
               const style: CSSProperties = {
                 width: `${layer.width * sceneRatio}px`,
-                opacity: clamp(layerProgress * 1.8),
+                opacity: clamp(rawProgress * 1.8),
                 transform: `translate3d(calc(-50% + ${x}px), ${y + packedDrop + finalLift}px, 0) rotate(${rotate}deg) scale(${scale * packedScale})`,
                 zIndex: 20 + index,
               }
@@ -215,7 +233,7 @@ export default function App() {
               return (
                 <img
                   key={layer.id}
-                  className="burger-layer"
+                  className="burger-layer burger-layer-real"
                   src={layer.src}
                   alt={layer.name}
                   style={style}
@@ -259,7 +277,7 @@ export default function App() {
           >
             <span>Ваш Barkhan готов</span>
             <h2>Горячий. Сочный. Ваш.</h2>
-            <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Заказать сейчас</a>
+            <a href={ORDER_URL} target="_blank" rel="noreferrer">Заказать сейчас</a>
           </div>
 
           <div className="progress-rail" aria-hidden="true">
@@ -290,7 +308,7 @@ export default function App() {
                 <p>{product.description}</p>
                 <div className="product-action">
                   <strong>{product.price}</strong>
-                  <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer" aria-label={`Заказать ${product.name}`}>↗</a>
+                  <a href={ORDER_URL} target="_blank" rel="noreferrer" aria-label={`Заказать ${product.name}`}>↗</a>
                 </div>
               </div>
             </article>
@@ -306,7 +324,7 @@ export default function App() {
             <span>Адрес</span>
             <strong>4-й микрорайон, 84/1</strong>
           </div>
-          <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Открыть всё меню</a>
+          <a href={ORDER_URL} target="_blank" rel="noreferrer">Открыть всё меню</a>
         </div>
       </section>
     </main>
