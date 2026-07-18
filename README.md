@@ -1,21 +1,44 @@
 # Barkhan Animated Site
 
-Animated website for Barkhan Burger Shop.
+Анимированный сайт Barkhan Burger Shop, развёрнутый через GitHub и Railway.
 
-## Goal
-Create a scroll-driven landing page where a burger assembles layer by layer, is packed into a box, and ends with an order call to action.
+## Реализовано
 
-## Stack
+- React + TypeScript + Vite;
+- автоматическое развёртывание на Railway;
+- первая полноэкранная страница;
+- сборка бургера по слоям при прокрутке;
+- обратное движение при прокрутке вверх;
+- анимированная упаковка в коробку;
+- финальная кнопка заказа;
+- мобильная адаптация;
+- режим `prefers-reduced-motion`;
+- собственный знак Barkhan и комплект лёгких SVG-слоёв бургера.
+
+## Материалы первой страницы
+
+- `public/assets/barkhan-mark.svg` — фирменный знак;
+- `public/assets/burger/bun-bottom.svg` — нижняя булочка;
+- `public/assets/burger/patty.svg` — котлета;
+- `public/assets/burger/cheese.svg` — сыр;
+- `public/assets/burger/lettuce.svg` — салат;
+- `public/assets/burger/tomato.svg` — томаты;
+- `public/assets/burger/onion.svg` — лук;
+- `public/assets/burger/bun-top.svg` — верхняя булочка.
+
+## Стек
+
 - React
 - TypeScript
 - Vite
-- CSS animations
-- Railway deployment
+- SVG
+- CSS scroll animation
+- Railway
 
-## Plan
-1. Create the React/Vite application.
-2. Add burger images and videos.
-3. Build scroll-controlled assembly animation.
-4. Add responsive mobile layout.
-5. Optimize media files.
-6. Deploy from GitHub to Railway.
+## Следующие этапы
+
+1. Заменить тестовые SVG реальными фотографиями или фотореалистичными PNG/WebP.
+2. Добавить короткое видео приготовления.
+3. Добавить меню и карточки блюд.
+4. Подключить реальную ссылку заказа.
+5. Выполнить финальную оптимизацию скорости.
