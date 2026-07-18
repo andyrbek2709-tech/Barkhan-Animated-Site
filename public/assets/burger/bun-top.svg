@@ -1,0 +1,31 @@
+<svg width="540" height="250" viewBox="0 0 540 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bun" x1="270" y1="18" x2="270" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD98C"/>
+      <stop offset="0.48" stop-color="#EFA044"/>
+      <stop offset="1" stop-color="#A84B1B"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientTransform="translate(225 72) rotate(78) scale(95 225)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0BC" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#FFF0BC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30" y="-35" width="600" height="330" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="17" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M42 196C49 91 126 20 270 20C414 20 491 91 498 196C466 225 390 237 270 237C150 237 74 225 42 196Z" fill="url(#bun)"/>
+    <path d="M58 190C144 211 396 211 482 190" stroke="#7C3213" stroke-width="10" stroke-linecap="round" opacity="0.36"/>
+    <ellipse cx="270" cy="111" rx="222" ry="98" fill="url(#shine)"/>
+    <g fill="#FFF0BD">
+      <ellipse cx="152" cy="104" rx="12" ry="4" transform="rotate(-28 152 104)"/>
+      <ellipse cx="202" cy="67" rx="12" ry="4" transform="rotate(20 202 67)"/>
+      <ellipse cx="258" cy="98" rx="12" ry="4" transform="rotate(-8 258 98)"/>
+      <ellipse cx="315" cy="62" rx="12" ry="4" transform="rotate(22 315 62)"/>
+      <ellipse cx="368" cy="105" rx="12" ry="4" transform="rotate(-18 368 105)"/>
+      <ellipse cx="415" cy="132" rx="11" ry="4" transform="rotate(25 415 132)"/>
+      <ellipse cx="112" cy="148" rx="11" ry="4" transform="rotate(12 112 148)"/>
+      <ellipse cx="290" cy="145" rx="11" ry="4" transform="rotate(-24 290 145)"/>
+    </g>
+  </g>
+</svg>
