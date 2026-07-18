@@ -1,0 +1,22 @@
+<svg width="800" height="230" viewBox="0 0 800 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bun" x1="400" y1="20" x2="400" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5B35B"/>
+      <stop offset="0.48" stop-color="#D97727"/>
+      <stop offset="1" stop-color="#8C3B16"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientTransform="translate(350 65) rotate(90) scale(105 310)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD892" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#FFD892" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M103 96C119 46 217 22 400 22C583 22 681 46 697 96L718 160C727 188 705 207 675 211C499 233 301 233 125 211C95 207 73 188 82 160L103 96Z" fill="url(#bun)"/>
+    <path d="M102 96C164 132 636 132 698 96" stroke="#7B2F11" stroke-opacity="0.45" stroke-width="7"/>
+    <path d="M112 81C180 47 274 36 401 36C526 36 623 47 688 81" stroke="url(#shine)" stroke-width="26" stroke-linecap="round"/>
+    <ellipse cx="400" cy="194" rx="290" ry="20" fill="#5A210C" fill-opacity="0.3"/>
+  </g>
+</svg>
