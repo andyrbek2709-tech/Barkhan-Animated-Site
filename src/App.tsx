@@ -29,6 +29,9 @@ const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, v
 export default function App() {
   const storyRef = useRef<HTMLElement>(null)
   const [progress, setProgress] = useState(0)
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === 'undefined' ? 1280 : window.innerWidth,
+  )
 
   useEffect(() => {
     let frame = 0
@@ -40,6 +43,7 @@ export default function App() {
       const rect = section.getBoundingClientRect()
       const scrollable = section.offsetHeight - window.innerHeight
       setProgress(clamp(-rect.top / Math.max(scrollable, 1)))
+      setViewportWidth(window.innerWidth)
     }
 
     const onScroll = () => {
@@ -63,6 +67,12 @@ export default function App() {
   const lidProgress = clamp((progress - 0.89) / 0.065)
   const orderProgress = clamp((progress - 0.94) / 0.06)
 
+  const isMobile = viewportWidth <= 640
+  const isTablet = viewportWidth > 640 && viewportWidth <= 900
+  const sceneRatio = isMobile ? 0.72 : isTablet ? 0.86 : 1
+  const finalLift = orderProgress * (isMobile ? -125 : isTablet ? -80 : -40)
+  const packedDrop = boxProgress * (isMobile ? 54 : isTablet ? 72 : 92)
+
   return (
     <main>
       <header className="site-header">
@@ -83,7 +93,7 @@ export default function App() {
             className="hero-copy"
             style={{
               opacity: 1 - copyProgress,
-              transform: `translate3d(0, ${copyProgress * -55}px, 0)`,
+              transform: `translate3d(0, calc(-50% - ${copyProgress * 55}px), 0)`,
             }}
           >
             <span className="kicker">BARKHAN BURGER SHOP · AKTAU</span>
@@ -97,18 +107,18 @@ export default function App() {
 
             {layers.map((layer, index) => {
               const layerProgress = clamp((progress - layer.start) / 0.105)
-              const entryY = -430 - index * 28
-              const y = entryY + (layer.finalY - entryY) * layerProgress
-              const x = layer.startX * (1 - layerProgress)
+              const entryY = (-430 - index * 28) * sceneRatio
+              const finalY = layer.finalY * sceneRatio
+              const y = entryY + (finalY - entryY) * layerProgress
+              const x = layer.startX * sceneRatio * (1 - layerProgress)
               const rotate = layer.rotate * (1 - layerProgress)
               const scale = 0.7 + layerProgress * 0.3
               const packedScale = 1 - boxProgress * 0.13
-              const packedY = boxProgress * 92
 
               const style: CSSProperties = {
-                width: `${layer.width}px`,
+                width: `${layer.width * sceneRatio}px`,
                 opacity: clamp(layerProgress * 1.8),
-                transform: `translate3d(calc(-50% + ${x}px), ${y + packedY}px, 0) rotate(${rotate}deg) scale(${scale * packedScale})`,
+                transform: `translate3d(calc(-50% + ${x}px), ${y + packedDrop + finalLift}px, 0) rotate(${rotate}deg) scale(${scale * packedScale})`,
                 zIndex: 20 + index,
               }
 
@@ -128,7 +138,7 @@ export default function App() {
               className="burger-box"
               style={{
                 opacity: boxProgress,
-                transform: `translate3d(-50%, ${178 - boxProgress * 128}px, 0) scale(${0.82 + boxProgress * 0.18})`,
+                transform: `translate3d(-50%, ${178 - boxProgress * 128 + finalLift}px, 0) scale(${0.82 + boxProgress * 0.18})`,
               }}
             >
               <div
