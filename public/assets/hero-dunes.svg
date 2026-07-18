@@ -1,0 +1,38 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="960" y1="0" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0909"/>
+      <stop offset="0.52" stop-color="#17100C"/>
+      <stop offset="1" stop-color="#30170D"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientTransform="translate(1420 260) rotate(90) scale(360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F99A41" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#F99A41" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dune1" x1="170" y1="662" x2="1510" y2="1028" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5A2B16"/>
+      <stop offset="0.45" stop-color="#9C4B22"/>
+      <stop offset="1" stop-color="#35170D"/>
+    </linearGradient>
+    <linearGradient id="dune2" x1="220" y1="790" x2="1720" y2="1060" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2D160D"/>
+      <stop offset="0.58" stop-color="#6D3217"/>
+      <stop offset="1" stop-color="#170C08"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" seed="8"/>
+      <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .08 0"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#sun)"/>
+  <circle cx="1418" cy="262" r="122" fill="#EF7B2D" fill-opacity="0.11" filter="url(#blur)"/>
+  <path d="M0 793C284 587 558 617 776 722C1018 838 1199 788 1398 682C1561 595 1728 601 1920 729V1080H0V793Z" fill="url(#dune1)"/>
+  <path d="M0 926C243 782 456 792 668 896C906 1013 1118 1018 1368 872C1574 752 1737 780 1920 906V1080H0V926Z" fill="url(#dune2)"/>
+  <path d="M238 826C590 671 829 795 1041 865" stroke="#E47A31" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M990 885C1285 746 1480 702 1781 830" stroke="#FFB864" stroke-opacity="0.14" stroke-width="2"/>
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.8"/>
+</svg>
