@@ -1,0 +1,14 @@
+<svg width="420" height="104" viewBox="0 0 420 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="20" y1="18" x2="126" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFCB75"/>
+      <stop offset="1" stop-color="#F06A24"/>
+    </linearGradient>
+  </defs>
+  <path d="M18 72C43 26 81 10 126 24C103 31 86 43 72 62C92 47 116 43 143 52C116 57 96 69 81 89H18C29 83 38 78 46 72H18Z" fill="url(#g)"/>
+  <path d="M168 33H192C207 33 218 40 218 53C218 61 214 67 207 71C216 74 221 80 221 89C221 102 210 109 193 109H168V33ZM191 63C198 63 202 60 202 55C202 50 198 47 191 47H184V63H191ZM193 95C201 95 205 92 205 86C205 81 201 78 193 78H184V95H193Z" fill="#FFF5E7" transform="translate(0 -19)"/>
+  <path d="M229 14H245L275 90H258L252 73H222L216 90H199L229 14ZM247 59L237 31L227 59H247Z" fill="#FFF5E7"/>
+  <path d="M282 14H299V43H327V14H344V90H327V59H299V90H282V14Z" fill="#FFF5E7"/>
+  <path d="M354 14H371V76H404V90H354V14Z" fill="#FFF5E7"/>
+  <text x="168" y="101" fill="#F7A24B" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="5">BURGER SHOP · AKTAU</text>
+</svg>
