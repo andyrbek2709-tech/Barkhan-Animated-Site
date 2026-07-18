@@ -12,6 +12,22 @@ type BurgerLayer = {
   width: number
 }
 
+type ProductLayer = {
+  src: string
+  alt: string
+  y: number
+  width: number
+}
+
+type MenuProduct = {
+  name: string
+  weight: string
+  price: string
+  description: string
+  badge: string
+  layers: ProductLayer[]
+}
+
 const layers: BurgerLayer[] = [
   { id: 'bottom', name: 'Нижняя булочка', src: '/assets/burger/bun-bottom.svg', finalY: 185, start: 0.08, startX: -260, rotate: -12, width: 390 },
   { id: 'sauce', name: 'Фирменный соус', src: '/assets/burger/sauce.svg', finalY: 143, start: 0.15, startX: 255, rotate: 8, width: 410 },
@@ -24,7 +40,81 @@ const layers: BurgerLayer[] = [
   { id: 'top', name: 'Верхняя булочка', src: '/assets/burger/bun-top.svg', finalY: -177, start: 0.69, startX: 0, rotate: -5, width: 410 },
 ]
 
+const menuProducts: MenuProduct[] = [
+  {
+    name: 'Barkhan',
+    weight: '395 г',
+    price: 'от 4 650 ₸',
+    badge: 'Фирменный',
+    description: 'Двойная котлета, чеддер, томаты, красный лук, огурцы, салат и три фирменных соуса.',
+    layers: [
+      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 92, width: 70 },
+      { src: '/assets/burger/lettuce.svg', alt: 'Салат', y: 67, width: 76 },
+      { src: '/assets/burger/patty.svg', alt: 'Котлета', y: 39, width: 72 },
+      { src: '/assets/burger/cheese.svg', alt: 'Сыр', y: 13, width: 76 },
+      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -9, width: 62 },
+      { src: '/assets/burger/tomato.svg', alt: 'Томаты', y: -31, width: 69 },
+      { src: '/assets/burger/onion.svg', alt: 'Красный лук', y: -50, width: 64 },
+      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -112, width: 73 },
+    ],
+  },
+  {
+    name: 'Smash Классик',
+    weight: '330 г',
+    price: 'от 3 650 ₸',
+    badge: 'Хит',
+    description: 'Двойная smash-котлета, тройной чеддер, огурцы, жареный лук и пикантные соусы.',
+    layers: [
+      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 94, width: 70 },
+      { src: '/assets/burger/patty.svg', alt: 'Первая котлета', y: 61, width: 73 },
+      { src: '/assets/burger/cheese.svg', alt: 'Первый слой сыра', y: 36, width: 76 },
+      { src: '/assets/burger/patty.svg', alt: 'Вторая котлета', y: 8, width: 73 },
+      { src: '/assets/burger/cheese.svg', alt: 'Второй слой сыра', y: -17, width: 76 },
+      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -39, width: 61 },
+      { src: '/assets/burger/onion.svg', alt: 'Лук', y: -55, width: 60 },
+      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -116, width: 73 },
+    ],
+  },
+  {
+    name: 'Chick',
+    weight: '280 г',
+    price: 'от 2 750 ₸',
+    badge: 'Легче',
+    description: 'Куриная грудка, чеддер, свежие томаты, огурцы, салат и соусы Айоли и 1000 островов.',
+    layers: [
+      { src: '/assets/burger/bun-bottom.svg', alt: 'Нижняя булочка', y: 93, width: 70 },
+      { src: '/assets/burger/lettuce.svg', alt: 'Салат', y: 67, width: 76 },
+      { src: '/assets/burger/patty.svg', alt: 'Куриная грудка', y: 34, width: 71 },
+      { src: '/assets/burger/cheese.svg', alt: 'Сыр', y: 9, width: 75 },
+      { src: '/assets/burger/pickles.svg', alt: 'Огурцы', y: -15, width: 61 },
+      { src: '/assets/burger/tomato.svg', alt: 'Томаты', y: -38, width: 68 },
+      { src: '/assets/burger/bun-top.svg', alt: 'Верхняя булочка', y: -105, width: 73 },
+    ],
+  },
+]
+
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value))
+
+function ProductBurger({ product }: { product: MenuProduct }) {
+  return (
+    <div className="product-burger" aria-hidden="true">
+      <div className="product-glow" />
+      {product.layers.map((layer, index) => (
+        <img
+          key={`${product.name}-${layer.alt}-${index}`}
+          src={layer.src}
+          alt=""
+          style={{
+            width: `${layer.width}%`,
+            transform: `translate3d(-50%, ${layer.y}px, 0)`,
+            zIndex: index + 2,
+          }}
+          draggable={false}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function App() {
   const storyRef = useRef<HTMLElement>(null)
@@ -80,7 +170,7 @@ export default function App() {
           <img src="/assets/barkhan-mark.svg" alt="" />
           <span>BARKHAN</span>
         </a>
-        <a className="header-order" href="#order">Заказать</a>
+        <a className="header-order" href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Заказать</a>
       </header>
 
       <section className="burger-story" ref={storyRef} id="top">
@@ -169,7 +259,7 @@ export default function App() {
           >
             <span>Ваш Barkhan готов</span>
             <h2>Горячий. Сочный. Ваш.</h2>
-            <a href="https://www.instagram.com/barkhan_aktau" target="_blank" rel="noreferrer">Заказать сейчас</a>
+            <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Заказать сейчас</a>
           </div>
 
           <div className="progress-rail" aria-hidden="true">
@@ -178,10 +268,46 @@ export default function App() {
         </div>
       </section>
 
-      <section className="after-hero">
-        <span>Продолжение сайта</span>
-        <h2>Меню, доставка и любимые позиции Barkhan</h2>
-        <p>Дальше появятся карточки бургеров, комбо-наборы, адреса точек и быстрый переход к заказу.</p>
+      <section className="menu-showcase" id="menu">
+        <div className="menu-intro">
+          <div>
+            <span className="section-kicker">Меню Barkhan · Актау</span>
+            <h2>Выберите<br />своего</h2>
+          </div>
+          <p>Три характера — один фирменный подход. Сочные ингредиенты, горячая подача и насыщенный вкус.</p>
+        </div>
+
+        <div className="product-grid">
+          {menuProducts.map((product, index) => (
+            <article className={`product-card product-card-${index + 1}`} key={product.name}>
+              <div className="product-topline">
+                <span>{product.badge}</span>
+                <span>{product.weight}</span>
+              </div>
+              <ProductBurger product={product} />
+              <div className="product-copy">
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <div className="product-action">
+                  <strong>{product.price}</strong>
+                  <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer" aria-label={`Заказать ${product.name}`}>↗</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="menu-footer">
+          <div>
+            <span>Ежедневно</span>
+            <strong>11:00 — 23:00</strong>
+          </div>
+          <div>
+            <span>Адрес</span>
+            <strong>4-й микрорайон, 84/1</strong>
+          </div>
+          <a href="https://barkhanburgershop.com/aktau" target="_blank" rel="noreferrer">Открыть всё меню</a>
+        </div>
       </section>
     </main>
   )
