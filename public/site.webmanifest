@@ -1,0 +1,16 @@
+{
+  "name": "Barkhan Burger Shop",
+  "short_name": "Barkhan",
+  "description": "Анимированный сайт Barkhan Burger Shop в Актау",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0b09",
+  "theme_color": "#0d0b09",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
