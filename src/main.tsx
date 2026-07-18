@@ -4,6 +4,7 @@ import App from './App'
 import './index.css'
 import './mobile-fixes.css'
 import './menu.css'
+import './real-burger.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
