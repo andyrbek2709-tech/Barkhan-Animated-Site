@@ -99,18 +99,6 @@ const menuProducts: MenuProduct[] = [
   },
 ]
 
-const heroBurger: ProductLayer[] = [
-  { src: burgerReal.bottom, alt: 'Нижняя булочка', y: 150, width: 84 },
-  { src: burgerReal.sauce, alt: 'Соус', y: 120, width: 84 },
-  { src: burgerReal.lettuce, alt: 'Салат', y: 92, width: 90 },
-  { src: burgerReal.patty, alt: 'Котлета', y: 52, width: 85 },
-  { src: burgerReal.cheese, alt: 'Сыр', y: 22, width: 89 },
-  { src: burgerReal.pickles, alt: 'Огурцы', y: -6, width: 74 },
-  { src: burgerReal.tomato, alt: 'Томаты', y: -32, width: 80 },
-  { src: burgerReal.onion, alt: 'Красный лук', y: -54, width: 75 },
-  { src: burgerReal.top, alt: 'Верхняя булочка', y: -120, width: 86 },
-]
-
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value))
 const easeOutBack = (value: number) => {
   const c1 = 1.70158
@@ -196,74 +184,6 @@ export default function App() {
         </a>
         <a className="header-order" href={ORDER_URL} target="_blank" rel="noreferrer">Заказать</a>
       </header>
-
-      <section className="hero-intro" id="hero">
-        <div className="hi-bg" aria-hidden="true">
-          <div className="hi-sun" />
-          <div className="hi-dune hi-dune-back" />
-          <div className="hi-dune hi-dune-front" />
-          <div className="hi-embers">
-            {Array.from({ length: 16 }).map((_, i) => {
-              const emberStyle: CSSProperties = {
-                left: `${(i * 61) % 100}%`,
-                width: `${3 + (i % 3)}px`,
-                height: `${3 + (i % 3)}px`,
-                animationDuration: `${5 + (i % 5)}s`,
-                animationDelay: `${((i * 7) % 60) / 10}s`,
-              }
-              return <span key={i} style={emberStyle} />
-            })}
-          </div>
-          <div className="hi-grain" />
-        </div>
-
-        <div className="hi-wordmark" aria-hidden="true">BARKHAN</div>
-
-        <div className="hi-content">
-          <span className="hi-kicker">BARKHAN BURGER SHOP · АКТАУ</span>
-
-          <div className="hi-burger" aria-label="Фирменный бургер Barkhan">
-            <div className="hi-burger-glow" />
-            <img className="hi-fly hi-fly-1" src={burgerReal.tomato} alt="" draggable={false} />
-            <img className="hi-fly hi-fly-2" src={burgerReal.pickles} alt="" draggable={false} />
-            <img className="hi-fly hi-fly-3" src={burgerReal.onion} alt="" draggable={false} />
-            <div className="hi-burger-stack">
-              {heroBurger.map((layer, index) => (
-                <img
-                  key={`hero-${layer.alt}-${index}`}
-                  src={layer.src}
-                  alt=""
-                  style={{
-                    width: `${layer.width}%`,
-                    transform: `translate3d(-50%, ${layer.y}px, 0)`,
-                    zIndex: index + 2,
-                  }}
-                  draggable={false}
-                />
-              ))}
-            </div>
-          </div>
-
-          <h1 className="hi-title">Сочно. Горячо. <span className="hi-accent">Barkhan.</span></h1>
-          <p className="hi-sub">Крафтовые бургеры в Актау — котлета на живом огне.</p>
-          <div className="hi-actions">
-            <a className="hi-btn hi-btn-primary" href="#top">Смотреть сборку</a>
-            <a
-              className="hi-btn hi-btn-ghost"
-              href="https://www.instagram.com/barkhan_aktau"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Заказать в Instagram
-            </a>
-          </div>
-        </div>
-
-        <a className="hi-scroll" href="#top" aria-label="Листайте вниз">
-          <span />
-          Листайте вниз
-        </a>
-      </section>
 
       <section className="burger-story" ref={storyRef} id="top">
         <div className="sticky-stage">
