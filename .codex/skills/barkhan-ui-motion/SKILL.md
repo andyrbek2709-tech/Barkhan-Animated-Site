@@ -12,21 +12,20 @@ Barkhan is a premium, cinematic burger experience for Aktau. The interface must 
 2. Define the user-visible problem in one sentence.
 3. Design mobile-first for widths 360–430 px, then validate tablet and desktop.
 4. Reuse the existing Barkhan visual language: dark roasted background, warm orange accent, cream typography, food photography, generous negative space.
-5. Use Motion for React for coordinated entrance, viewport, gesture, spring, and layout animation. Keep simple hover color changes in CSS.
+5. Prefer the current lightweight scroll system and CSS for production changes. Test any new animation library in an isolated branch before merging.
 6. Animate `transform` and `opacity` by default. Avoid layout-thrashing animation of `top`, `left`, `width`, or `height` during continuous motion.
-7. Respect `prefers-reduced-motion` and the global `MotionConfig`.
+7. Respect `prefers-reduced-motion`.
 8. Keep the main CTA visible, thumb-accessible, and linked to the current official order URL.
 9. Test visual hierarchy, clipping, overflow, text collision, safe-area spacing, and tap-target size.
 10. Review the final result from screenshots at the beginning, middle, and end of the scroll story before declaring completion.
 
 ## Motion principles
 
-- Ingredient landings: short spring with controlled overshoot.
+- Ingredient landings: short controlled overshoot.
 - Scroll-driven assembly: deterministic and reversible; never continue independently after the user stops scrolling.
-- Product-card reveals: subtle, staggered, once per session.
-- Hover and press: restrained scale/translation; no distracting rotation.
+- Product-card reveals: subtle and restrained.
+- Hover and press: small scale or translation only; no distracting rotation.
 - Keep simultaneous large animations to a minimum on mobile.
-- Prefer the presets in `src/motion/presets.ts`.
 
 ## Visual quality gates
 
@@ -41,6 +40,7 @@ Barkhan is a premium, cinematic burger experience for Aktau. The interface must 
 
 - Target smooth interaction on mid-range Android devices.
 - Avoid unnecessary React state updates during scroll.
-- Do not add animation libraries that duplicate Motion.
+- Do not add overlapping animation libraries.
 - Lazy-load below-the-fold media where practical.
 - Preserve a functional static experience when motion is reduced.
+- Confirm a successful Railway build before calling the iteration complete.
