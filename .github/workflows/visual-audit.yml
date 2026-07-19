@@ -1,0 +1,92 @@
+name: Visual Audit
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'visual-audit/latest-run.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install project
+        run: npm install
+
+      - name: Install Playwright for audit only
+        run: |
+          npm install --no-save playwright@latest
+          npx playwright install --with-deps chromium
+
+      - name: Build site
+        run: npm run build
+
+      - name: Start preview
+        run: |
+          PORT=4173 npm run start > /tmp/barkhan-preview.log 2>&1 &
+          echo $! > /tmp/barkhan-preview.pid
+          for attempt in {1..45}; do
+            if curl -fsS http://127.0.0.1:4173 > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/barkhan-preview.log
+          exit 1
+
+      - name: Capture visual states and video
+        env:
+          AUDIT_URL: http://127.0.0.1:4173
+        run: node scripts/visual-audit.mjs
+
+      - name: Upload visual audit
+        id: upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: barkhan-visual-audit-${{ github.sha }}
+          path: visual-audit/output
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Save latest artifact pointer
+        if: always() && steps.upload.outputs.artifact-id != ''
+        env:
+          RUN_ID: ${{ github.run_id }}
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p visual-audit
+          node - <<'NODE'
+          const fs = require('fs')
+          const data = {
+            run_id: Number(process.env.RUN_ID),
+            artifact_id: Number(process.env.ARTIFACT_ID),
+            artifact_url: process.env.ARTIFACT_URL,
+            commit_sha: process.env.COMMIT_SHA,
+            created_at: new Date().toISOString()
+          }
+          fs.writeFileSync('visual-audit/latest-run.json', JSON.stringify(data, null, 2) + '\n')
+          NODE
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add visual-audit/latest-run.json
+          git commit -m 'chore: update visual audit pointer [skip ci]' || exit 0
+          git push
