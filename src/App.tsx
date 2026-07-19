@@ -185,6 +185,56 @@ export default function App() {
         <a className="header-order" href={ORDER_URL} target="_blank" rel="noreferrer">Заказать</a>
       </header>
 
+      <section className="hero-intro" id="hero">
+        <div className="hi-bg" aria-hidden="true">
+          <div className="hi-sun" />
+          <div className="hi-dune hi-dune-back" />
+          <div className="hi-dune hi-dune-front" />
+          <div className="hi-embers">
+            {Array.from({ length: 16 }).map((_, i) => {
+              const emberStyle: CSSProperties = {
+                left: `${(i * 61) % 100}%`,
+                width: `${3 + (i % 3)}px`,
+                height: `${3 + (i % 3)}px`,
+                animationDuration: `${5 + (i % 5)}s`,
+                animationDelay: `${((i * 7) % 60) / 10}s`,
+              }
+              return <span key={i} style={emberStyle} />
+            })}
+          </div>
+          <div className="hi-grain" />
+        </div>
+
+        <div className="hi-content">
+          <span className="hi-kicker">BARKHAN BURGER SHOP · АКТАУ</span>
+          <h1 className="hi-title">
+            <span className="hi-line">Сочно.</span>
+            <span className="hi-line">Горячо.</span>
+            <span className="hi-line hi-accent">Barkhan.</span>
+          </h1>
+          <p className="hi-sub">
+            Крафтовые бургеры в Актау — котлета на живом огне, булочки печём
+            каждое утро, соус по фирменному рецепту.
+          </p>
+          <div className="hi-actions">
+            <a className="hi-btn hi-btn-primary" href="#top">Смотреть сборку</a>
+            <a
+              className="hi-btn hi-btn-ghost"
+              href="https://www.instagram.com/barkhan_aktau"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Заказать в Instagram
+            </a>
+          </div>
+        </div>
+
+        <a className="hi-scroll" href="#top" aria-label="Листайте вниз">
+          <span />
+          Листайте вниз
+        </a>
+      </section>
+
       <section className="burger-story" ref={storyRef} id="top">
         <div className="sticky-stage">
           <div className="ambient ambient-one" />

@@ -450,6 +450,264 @@ img {
   line-height: 1.7;
 }
 
+/* ============ INTRO HERO ============ */
+.hero-intro {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(96px, 15vh, 170px) clamp(24px, 6vw, 90px) clamp(74px, 10vh, 120px);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  background:
+    radial-gradient(120% 82% at 50% 112%, rgba(245, 145, 47, 0.3), transparent 55%),
+    radial-gradient(92% 60% at 14% 6%, rgba(191, 67, 29, 0.22), transparent 50%),
+    linear-gradient(160deg, #1a120c 0%, #0c0a08 52%, #140d09 100%);
+}
+
+.hi-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hi-sun {
+  position: absolute;
+  left: 50%;
+  bottom: -16%;
+  width: min(92vw, 940px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 145, 47, 0.5), rgba(245, 145, 47, 0.12) 38%, transparent 66%);
+  filter: blur(8px);
+  animation: hiSun 7s ease-in-out infinite;
+}
+
+@keyframes hiSun {
+  0%, 100% { opacity: 0.82; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
+
+.hi-dune {
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  bottom: -2%;
+  height: 36vh;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.hi-dune-back {
+  bottom: 5%;
+  height: 28vh;
+  background: linear-gradient(180deg, #7a3417, #3a1a0e);
+  opacity: 0.5;
+  filter: blur(1px);
+  animation: hiFloat 9s ease-in-out infinite;
+}
+
+.hi-dune-front {
+  background: linear-gradient(180deg, #4a2110, #160b07);
+  box-shadow: 0 -22px 60px rgba(245, 145, 47, 0.16);
+  animation: hiFloat 11s ease-in-out infinite reverse;
+}
+
+@keyframes hiFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hi-embers {
+  position: absolute;
+  inset: 0;
+}
+
+.hi-embers span {
+  position: absolute;
+  bottom: 14%;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 8px 1px rgba(245, 145, 47, 0.7);
+  opacity: 0;
+  animation-name: hiEmber;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hiEmber {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  14% { opacity: 0.9; }
+  100% { transform: translateY(-62vh) scale(0.3); opacity: 0; }
+}
+
+.hi-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+.hi-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+  max-width: 1120px;
+}
+
+.hi-kicker {
+  display: inline-block;
+  margin-bottom: 26px;
+  padding: 8px 16px;
+  border: 1px solid rgba(245, 145, 47, 0.4);
+  border-radius: 999px;
+  color: var(--orange);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  animation: hiUp 0.8s 0.1s both cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hi-title {
+  margin: 0;
+  max-width: 100%;
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(3.4rem, 10vw, 9rem);
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+  overflow-wrap: break-word;
+}
+
+.hi-title .hi-line {
+  display: block;
+  animation: hiUp 0.9s both cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hi-title .hi-line:nth-child(1) { animation-delay: 0.18s; }
+.hi-title .hi-line:nth-child(2) { animation-delay: 0.30s; }
+.hi-title .hi-line:nth-child(3) { animation-delay: 0.42s; }
+
+.hi-accent {
+  color: var(--orange);
+  text-shadow: 0 8px 44px rgba(245, 145, 47, 0.42);
+}
+
+.hi-sub {
+  max-width: 620px;
+  margin: 30px auto 0;
+  color: rgba(255, 242, 214, 0.72);
+  font-size: clamp(1rem, 1.5vw, 1.28rem);
+  line-height: 1.62;
+  animation: hiUp 0.9s 0.56s both cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hi-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 42px;
+  animation: hiUp 0.9s 0.7s both cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hi-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hi-btn-primary {
+  background: var(--orange);
+  color: #1b1008;
+  box-shadow: 0 14px 40px rgba(245, 145, 47, 0.3);
+}
+
+.hi-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 52px rgba(245, 145, 47, 0.46);
+}
+
+.hi-btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--cream);
+  background: rgba(20, 13, 10, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.hi-btn-ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.hi-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  z-index: 3;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 242, 214, 0.5);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  animation: hiUp 1s 1s both;
+}
+
+.hi-scroll span {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+}
+
+.hi-scroll span::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 3px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--orange);
+  transform: translateX(-50%);
+  animation: wheel 1.4s ease-in-out infinite;
+}
+
+@keyframes hiUp {
+  from { opacity: 0; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .hi-title { font-size: clamp(2.2rem, 10vw, 3.6rem); letter-spacing: -0.04em; }
+  .hi-sub { font-size: 1rem; }
+  .hi-actions { gap: 12px; width: 100%; }
+  .hi-btn { padding: 14px 22px; font-size: 0.92rem; justify-content: center; }
+  .hi-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
 @media (max-width: 900px) {
   .sticky-stage {
     min-height: 620px;
