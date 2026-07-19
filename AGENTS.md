@@ -19,3 +19,7 @@ For all UI and animation work, use the project-local Barkhan UI & Motion skill:
 ## Visual direction
 
 Premium fast-food campaign, dark roasted environment, warm orange firelight, cream typography, high-contrast food imagery, restrained editorial composition, and minimal generic UI chrome.
+
+## Deployment discipline
+
+Batch related UI changes, then run one clean deployment and verify the public mobile experience before the next visual iteration.
