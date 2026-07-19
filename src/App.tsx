@@ -120,7 +120,7 @@ export default function App() {
               fetchPriority="high"
               decoding="async"
               draggable={false}
-              style={{ transform: `translate3d(-50%, ${burgerY}px, 0) scale(${burgerScale})` }}
+              style={{ transform: `translate3d(-50%, calc(-50% + ${burgerY}px), 0) scale(${burgerScale})` }}
             />
             <div
               className="burger-shadow"
