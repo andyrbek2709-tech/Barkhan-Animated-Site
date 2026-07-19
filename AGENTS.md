@@ -8,13 +8,13 @@ For all UI and animation work, use the project-local Barkhan UI & Motion skill:
 ## Non-negotiable rules
 
 - Mobile-first validation at 360–430 px.
-- Use Motion for React for coordinated animation and gestures.
 - Preserve reduced-motion accessibility.
 - Keep the burger assembly scroll-driven, reversible, and smooth.
+- Prefer GPU-friendly `transform` and `opacity` animation.
 - Use the photorealistic assets in `src/assets/burger-real.ts`.
-- Use shared animation presets from `src/motion/presets.ts`.
 - Do not replace verified official order links with guessed URLs.
 - Do not declare visual work complete without checking beginning, middle, final assembly, and menu states.
+- Introduce new animation libraries only in an isolated test branch and merge after a successful Railway build.
 
 ## Visual direction
 
