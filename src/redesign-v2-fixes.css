@@ -1,0 +1,19 @@
+.master-burger {
+  transform: translate3d(-50%, calc(-50% + 38px), 0) scale(0.9);
+}
+
+@media (max-width: 640px) {
+  .hero-detail {
+    top: max(102px, calc(env(safe-area-inset-top) + 86px));
+    bottom: auto;
+    max-width: 330px;
+  }
+
+  .hero-detail > strong {
+    font-size: 2.3rem;
+  }
+
+  .hero-detail > p {
+    max-width: 300px;
+  }
+}
